@@ -1,10 +1,5 @@
 const { Spot } = require('@binance/connector')
-import Util from "../lib/util"
-
-interface GlobalPriceIndex {
-  name: string
-  average_mid_price: BigInteger;
-}
+import { calculateMidPriceAverage } from "../lib/util"
 
 class Binance {
   client: typeof Spot;
@@ -19,7 +14,7 @@ class Binance {
     const ask = parseFloat(result.data.asks[0][0]);
     const bid = parseFloat(result.data.bids[0][0]);
 
-    const midPriceAverage = Util.calculateMidPriceAverage(ask, bid);
+    const midPriceAverage = calculateMidPriceAverage(ask, bid);
 
     return midPriceAverage;
   };

@@ -1,5 +1,5 @@
 import { Kraken } from "node-kraken-api";
-import Util from "../lib/util"
+import { calculateMidPriceAverage } from "../lib/util"
 
 class KrakenClient {
   ws: any;
@@ -15,7 +15,7 @@ class KrakenClient {
     const ask = parseFloat(result['XXBTZUSD']['asks'][0][0]);
     const bid = parseFloat(result['XXBTZUSD']['bids'][0][0]);
 
-    const midPriceAverage = Util.calculateMidPriceAverage(ask, bid);
+    const midPriceAverage = calculateMidPriceAverage(ask, bid);
 
     return midPriceAverage;
   };

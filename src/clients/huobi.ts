@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import Util from "../lib/util"
+import { calculateMidPriceAverage } from "../lib/util"
 
 class Huobi {
   ws: any;
@@ -14,7 +14,7 @@ class Huobi {
     const ask = parseFloat(result.data.tick.asks[0][0]);
     const bid = parseFloat(result.data.tick.bids[0][0]);
 
-    const midPriceAverage = Util.calculateMidPriceAverage(ask, bid);
+    const midPriceAverage = calculateMidPriceAverage(ask, bid);
 
     return midPriceAverage;
   };
