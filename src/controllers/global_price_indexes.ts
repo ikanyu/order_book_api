@@ -15,21 +15,24 @@ class GlobalPriceIndexController {
     const exchangeParams: string = req.params.exchange;
     const exchange = exchangeParams.charAt(0).toUpperCase() + exchangeParams.slice(1);
 
-    let result;
+    let midPrice;
 
     if (exchange == 'Binance') {
-      result = await Binance.getMidPrice('BTCUSDT');
+      midPrice = await Binance.getMidPrice('BTCUSDT');
     } else if (exchange == 'Kraken') {
-      result = await Kraken.getMidPrice('XBTUSD');
+      midPrice = await Kraken.getMidPrice('XBTUSD');
     } else if (exchange == 'Huobi') {
-      result = await Huobi.getMidPrice('btcusdt');
+      midPrice = await Huobi.getMidPrice('btcusdt');
     }
     // console.log(result);
     // let result: AxiosResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
     // let globalPriceIndexes: [GlobalPriceIndex] = result;
 
     return res.status(200).json({
-        message: result
+        data: {
+          exchangeName: exchange,
+          midPrice: midPrice
+        }
     });
   };
 }
