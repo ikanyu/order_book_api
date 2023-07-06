@@ -16,7 +16,7 @@ describe("Huobi", () => {
 
     const result = await Huobi.getMidPrice('btcusdt');
 
-    expect(result).toBe('1.00');
+    expect(result).toMatchObject({ midPrice: '1.00' });
   });
 
   test('issue on the endpoint returns error', async () => {

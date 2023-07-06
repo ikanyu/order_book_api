@@ -15,7 +15,7 @@ describe("Kraken", () => {
     expect(spy).toBeCalled();
     const result = await Kraken.getMidPrice('XBTUSD');
 
-    expect(result).toBe('1.00');
+    expect(result).toMatchObject({ midPrice: '1.00' });
   });
 
   test('should return error if there is no result returned', async () => {

@@ -15,7 +15,7 @@ describe("Binance", () => {
 
     const result = await Binance.getMidPrice('BTCUSDT');
 
-    expect(result).toBe('1.00');
+    expect(result).toMatchObject({ midPrice: '1.00' });
   });
 
   test('invalid symbol returns error', async () => {

@@ -14,7 +14,7 @@ class Huobi {
 
       const midPriceAverage = calculateMidPriceAverage(ask, bid);
 
-      return midPriceAverage;
+      return { midPrice: midPriceAverage };
     } else {
       return { error: "There's an error retrieving order book." }
     }
