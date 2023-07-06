@@ -2,7 +2,7 @@ import { Kraken as kraken }  from "node-kraken-api";
 import { calculateMidPriceAverage } from "../lib/util"
 
 class Kraken {
-  client: any;
+  client: kraken;
 
   constructor() {
     this.client = new kraken();

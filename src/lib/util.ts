@@ -10,7 +10,7 @@ const EXCHANGES_MAPPING: any = {
 
 const EXCHANGES = [Binance, Kraken, Huobi]
 
-function calculateMidPriceAverage(ask: any, bid: any) {
+function calculateMidPriceAverage(ask: number, bid: number) {
     return ((ask + bid) / 2).toFixed(2)
 };
 
