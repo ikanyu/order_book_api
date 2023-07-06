@@ -52,7 +52,7 @@ GET /global_price_indexes
 
 |Status| Response Body Example |
 |--|--|
-| OK | <code>{"data": [<br>{"exchangeName":"Binance","midPrice": "31438.36"},<br>{"exchangeName": "KrakenClient","midPrice": "31395.05"},<br>{"exchangeName": "Huobi","midPrice": "31428.85"}<br>], "averagePrice": 31119.806666666667}</code> |
+| OK | <code>{"data": [<br>{"exchangeName":"Binance","midPrice": "31438.36"},<br>{"exchangeName": "Kraken","midPrice": "31395.05"},<br>{"exchangeName": "Huobi","midPrice": "31428.85"}<br>], "averagePrice": 31119.806666666667}</code> |
 
 ###  Improvements to do if given more time
 
