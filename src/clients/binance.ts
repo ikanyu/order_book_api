@@ -11,12 +11,16 @@ class Binance {
   getMidPrice = async (symbol: string) => {
     const result = await this.client.depth(symbol);
 
-    const ask = parseFloat(result.data.asks[0][0]);
-    const bid = parseFloat(result.data.bids[0][0]);
+    if (result.status === 200) {
+      const ask = parseFloat(result.data.asks[0][0]);
+      const bid = parseFloat(result.data.bids[0][0]);
 
-    const midPriceAverage = calculateMidPriceAverage(ask, bid);
+      const midPriceAverage = calculateMidPriceAverage(ask, bid);
 
-    return midPriceAverage;
+      return midPriceAverage;
+    } else {
+      return { error: "There's an error retrieving order book." }
+    }
   };
 }
 

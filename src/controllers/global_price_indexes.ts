@@ -1,14 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-// import axios, { AxiosResponse } from 'axios';
+
 import Binance from '../clients/binance'
 import Kraken from '../clients/kraken'
 import Huobi from '../clients/huobi'
-// import { Kraken } from 'node-kraken-api';
-
-interface GlobalPriceIndex {
-  platform_name: string;
-  mid_price_average: BigInteger;
-}
 
 class GlobalPriceIndexController {
   getGlobalPriceIndexes = async (req: Request, res: Response, next: NextFunction) => {
@@ -24,9 +18,6 @@ class GlobalPriceIndexController {
     } else if (exchange == 'Huobi') {
       midPrice = await Huobi.getMidPrice('btcusdt');
     }
-    // console.log(result);
-    // let result: AxiosResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
-    // let globalPriceIndexes: [GlobalPriceIndex] = result;
 
     return res.status(200).json({
         data: {

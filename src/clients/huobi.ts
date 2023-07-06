@@ -11,12 +11,16 @@ class Huobi {
   getMidPrice = async (symbol: string) => {
     let result: AxiosResponse = await axios.get(`https://api.huobi.pro/market/depth?symbol=${symbol}&type=step0&depth=5`);
 
-    const ask = parseFloat(result.data.tick.asks[0][0]);
-    const bid = parseFloat(result.data.tick.bids[0][0]);
+    if (result.data.status === "ok") {
+      const ask = parseFloat(result.data.tick.asks[0][0]);
+      const bid = parseFloat(result.data.tick.bids[0][0]);
 
-    const midPriceAverage = calculateMidPriceAverage(ask, bid);
+      const midPriceAverage = calculateMidPriceAverage(ask, bid);
 
-    return midPriceAverage;
+      return midPriceAverage;
+    } else {
+      return { error: "There's an error retrieving order book." }
+    }
   };
 }
 
