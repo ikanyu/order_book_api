@@ -1,8 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-
-import Binance from '../clients/binance'
-import Kraken from '../clients/kraken'
-import Huobi from '../clients/huobi'
 import { EXCHANGES, EXCHANGES_MAPPING } from '../lib/util'
 
 class GlobalPriceIndexController {
