@@ -11,10 +11,11 @@ class KrakenClient {
 
   getMidPrice = async (symbol: string) => {
     const result: any = await this.client.depth({pair: symbol, count: 10});
+    const resultValue: any = Object.values(result)[0];
 
     if (result.length !== 0) {
-      const ask = parseFloat(result['XXBTZUSD']['asks'][0][0]);
-      const bid = parseFloat(result['XXBTZUSD']['bids'][0][0]);
+      const ask = parseFloat(resultValue['asks'][0][0]);
+      const bid = parseFloat(resultValue['bids'][0][0]);
 
       const midPriceAverage = calculateMidPriceAverage(ask, bid);
 
