@@ -1,8 +1,8 @@
-import KrakenClient from "../../clients/kraken"
+import Kraken from "../../clients/kraken"
 
 describe("Kraken", () => {
   test('should return mid price average', async () => {
-    const spy = jest.spyOn(KrakenClient.client, 'depth').mockReturnValue(
+    const spy = jest.spyOn(Kraken.client, 'depth').mockReturnValue(
       {
         XXBTZUSD: {
           asks: [["1.0", "1.0"]],
@@ -10,20 +10,20 @@ describe("Kraken", () => {
         }
       }
     )
-    await KrakenClient.client.depth();
+    await Kraken.client.depth();
 
     expect(spy).toBeCalled();
-    const result = await KrakenClient.getMidPrice('XBTUSD');
+    const result = await Kraken.getMidPrice('XBTUSD');
 
     expect(result).toBe('1.00');
   });
 
   test('should return error if there is no result returned', async () => {
-    const spy = jest.spyOn(KrakenClient.client, 'depth').mockReturnValue([])
-    await KrakenClient.client.depth();
+    const spy = jest.spyOn(Kraken.client, 'depth').mockReturnValue([])
+    await Kraken.client.depth();
 
     expect(spy).toBeCalled();
-    const result = await KrakenClient.getMidPrice('XBTUSD');
+    const result = await Kraken.getMidPrice('XBTUSD');
 
     expect(result).toMatchObject({ error: "There's an error retrieving order book." });
   });

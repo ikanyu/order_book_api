@@ -4,7 +4,7 @@ import Huobi from '../clients/huobi'
 
 const EXCHANGES_MAPPING: any = {
   'Binance': 'BTCUSDT',
-  'KrakenClient': 'XBTUSD',
+  'Kraken': 'XBTUSD',
   'Huobi': 'btcusdt',
 };
 

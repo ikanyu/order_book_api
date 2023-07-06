@@ -2,9 +2,6 @@ import axios, { AxiosResponse } from 'axios';
 import { calculateMidPriceAverage } from "../lib/util"
 
 class Huobi {
-  ws: any;
-  client: any;
-
   constructor() {
   }
 

@@ -1,12 +1,11 @@
-import { Kraken } from "node-kraken-api";
+import { Kraken as kraken }  from "node-kraken-api";
 import { calculateMidPriceAverage } from "../lib/util"
 
-class KrakenClient {
-  ws: any;
+class Kraken {
   client: any;
 
   constructor() {
-    this.client = new Kraken();
+    this.client = new kraken();
   }
 
   getMidPrice = async (symbol: string) => {
@@ -26,4 +25,4 @@ class KrakenClient {
   };
 }
 
-export default new KrakenClient();
+export default new Kraken();
